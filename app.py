@@ -9,4 +9,4 @@ st.write("Bem-vindo ao Menu MVP! Esta é uma base para sua aplicação Streamlit
 nome = st.text_input("Qual o seu nome?")
 
 if nome:
-    st.success(f"Olá, {nome}! Seja bem-vindo à sua página Streamlit.") 
+    st.success(f"Olá, {nome}! Seja bem-vindo à sua página Streamlit.")

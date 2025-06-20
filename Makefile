@@ -28,3 +28,6 @@ check: ## Run all checks (lint, format, test)
 	$(MAKE) lint
 	$(MAKE) format
 	$(MAKE) test
+
+done: ## Run done script
+	./scripts/done.sh
