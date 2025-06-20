@@ -29,6 +29,9 @@ check: ## Run all checks (lint, format, test)
 	$(MAKE) format
 	$(MAKE) test
 
+run: ## Run Streamlit app
+	poetry run streamlit run app.py
+
 docker-test: ## Test in Docker (simulates CI/CD environment)
 	./scripts/docker-test.sh
 

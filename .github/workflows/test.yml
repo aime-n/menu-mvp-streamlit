@@ -57,7 +57,7 @@ jobs:
       - name: Run tests
         run: |
           poetry run pytest tests/ -s --cov=. --cov-report=term-missing ${@-}
-          
+
       - name: Upload coverage reports to Codecov
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
         uses: codecov/codecov-action@v5
