@@ -1,0 +1,33 @@
+[project]
+name = "menu-mvp-streamlit"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "aime-n",email = "aime.nobrega@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "streamlit (>=1.46.0,<2.0.0)",
+    "bandit (>=1.8.5,<2.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.1"
+pytest-cov = "^5.0.0"
+pep8-naming = "^0.15.1"
+cruft = "^2.16.0"
+flake8 = "^7.2.0"
+isort = "^6.0.1"
+black = "^25.1.0"
+coverage = "^7.9.1"
+mypy = "^1.16.1"
+
