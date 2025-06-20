@@ -1,4 +1,4 @@
-.PHONY: help clean test install dev-install lint format check
+.PHONY: help clean test install dev-install lint format check docker-test done docker-app docker-shell docker-lint docker-format
 
 help: ## Show this help message
 	@echo "Available commands:"
@@ -29,5 +29,20 @@ check: ## Run all checks (lint, format, test)
 	$(MAKE) format
 	$(MAKE) test
 
-done: ## Run done script
+docker-test: ## Test in Docker (simulates CI/CD environment)
+	./scripts/docker-test.sh
+
+docker-app: ## Run Streamlit app in Docker
+	docker-compose up app
+
+docker-shell: ## Open shell in Docker container
+	docker-compose run --rm shell
+
+docker-lint: ## Run linting in Docker
+	docker-compose run --rm lint
+
+docker-format: ## Run formatting in Docker
+	docker-compose run --rm format
+
+done: ## Clean, update lockfile and test
 	./scripts/done.sh

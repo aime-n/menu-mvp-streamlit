@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: menu-mvp-streamlit-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    command: poetry run streamlit run app.py
+    networks:
+      - menu-mvp-network
+
+  test:
+    build: .
+    container_name: menu-mvp-streamlit-test
+    volumes:
+      - .:/app
+    command: poetry run pytest tests/ -v
+    networks:
+      - menu-mvp-network
+
+  lint:
+    build: .
+    container_name: menu-mvp-streamlit-lint
+    volumes:
+      - .:/app
+    command: poetry run flake8 . tests/ && poetry run mypy .
+    networks:
+      - menu-mvp-network
+
+  format:
+    build: .
+    container_name: menu-mvp-streamlit-format
+    volumes:
+      - .:/app
+    command: poetry run isort . tests/ && poetry run black . tests/
+    networks:
+      - menu-mvp-network
+
+  shell:
+    build: .
+    container_name: menu-mvp-streamlit-shell
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    networks:
+      - menu-mvp-network
+
+networks:
+  menu-mvp-network:
+    driver: bridge 
